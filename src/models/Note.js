@@ -12,6 +12,11 @@ const NoteSchema = new Schema({
         type: String,
         required: true,
       },
+      archive: {
+        type: Number,
+        required: false,
+        default : null,
+      },
 }, {
     timestamps: true
 })

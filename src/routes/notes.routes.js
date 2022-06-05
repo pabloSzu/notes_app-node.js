@@ -7,7 +7,11 @@ const {
     renderNotes,
     renderEditForm,
     updateNote,
-    deleteNote
+    deleteNote,
+    archivedNote,
+    renderAchivedNote,
+    unarchivedNote,
+    renderUnachivedNote
 } = require('../controllers/notes.controller');
 
 const {isAuthenticated} = require('../helpers/auth');
@@ -24,6 +28,16 @@ router.get('/notes', isAuthenticated, renderNotes);
 router.get('/notes/edit/:id', isAuthenticated, renderEditForm);
 
 router.put('/notes/edit/:id', isAuthenticated, updateNote);
+
+// Archive notes
+router.get('/notes/archive/:id', isAuthenticated, archivedNote);
+router.get('/notes/archived', isAuthenticated, renderAchivedNote);
+
+
+// Unrchive notes
+router.get('/notes/unarchive/:id', isAuthenticated, unarchivedNote);
+router.get('/notes/unarchived', isAuthenticated, renderUnachivedNote);
+
 
 // Delete notes
 router.delete('/notes/delete/:id', isAuthenticated, deleteNote);
